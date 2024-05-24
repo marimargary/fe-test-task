@@ -11,7 +11,7 @@ const Button = ({ children, theme = "main", ...props }: Props) => {
     <MuiButton
       {...props}
       sx={{
-        padding: "8px 14px",
+        padding: "8px 15px",
         minWidth: "120px",
         maxWidth: "100%",
         bgcolor: theme === "light" ? "#eee" : "primary.main",
