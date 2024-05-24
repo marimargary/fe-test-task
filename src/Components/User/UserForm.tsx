@@ -23,7 +23,13 @@ const validateEmail = (value: string) => {
   return emailRegex.test(value) || "Invalid email format";
 };
 
-const UserForm = ({ onSubmit }: { onSubmit: (data: UserFormSchema) => void }) => {
+const UserForm = ({
+  onSubmit,
+  loading,
+}: {
+  onSubmit: (data: UserFormSchema) => void;
+  loading: boolean;
+}) => {
   const [formData, setFormData] = useState(inintialData);
   const [allergiesSearch, setAllergiesSearch] = useState("");
 
@@ -152,7 +158,9 @@ const UserForm = ({ onSubmit }: { onSubmit: (data: UserFormSchema) => void }) =>
         </FormControl>
 
         <div className="flex justify-end flex-wrap gap-6 pt-4 mt-2 border-t-1 border-[#E0E0E0] w-full ">
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={loading}>
+            Save
+          </Button>
         </div>
       </form>
     </>

@@ -9,7 +9,7 @@ import { addToast } from "../../Store/slices/toastsSlice";
 
 const AddUser: FC = () => {
   const dispatch = useDispatch();
-  const [addUser] = useAddUserMutation();
+  const [addUser, { isLoading }] = useAddUserMutation();
   const { refetch } = useGetUsersQuery("");
 
   const navigate = useNavigate();
@@ -28,9 +28,7 @@ const AddUser: FC = () => {
           }),
         );
         refetch();
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        navigate("/");
       } catch (error) {
         dispatch(
           addToast({
@@ -51,7 +49,7 @@ const AddUser: FC = () => {
         padding: "20px 0 0",
       }}
     >
-      <UserForm onSubmit={handleSubmitg} />
+      <UserForm onSubmit={handleSubmitg} loading={isLoading} />
     </Container>
   );
 };

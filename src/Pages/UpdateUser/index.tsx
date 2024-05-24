@@ -31,11 +31,14 @@ const UpdateUser = () => {
   const { action, id } = useParams();
   const dispatch = useDispatch();
 
-  const [updatePhone] = useUpdatePhoneMutation();
-  const [updateEmail] = useUpdateEmailMutation();
-  const [verifyUpdateEmail] = useVerifyUpdateEmailMutation();
-  const [verifyUpdatePhone] = useVerifyUpdatePhoneMutation();
-  const [updateUserAllergies] = useUpdateUserAllergiesMutation();
+  const [updatePhone, { isLoading: phoneLoading }] = useUpdatePhoneMutation();
+  const [updateEmail, { isLoading: phoneVerLoading }] = useUpdateEmailMutation();
+  const [verifyUpdateEmail, { isLoading: emailLoading }] = useVerifyUpdateEmailMutation();
+  const [verifyUpdatePhone, { isLoading: emailVerLoading }] = useVerifyUpdatePhoneMutation();
+  const [updateUserAllergies, { isLoading: allergiesLoading }] = useUpdateUserAllergiesMutation();
+
+  const loading =
+    phoneLoading || phoneVerLoading || emailLoading || emailVerLoading || allergiesLoading;
 
   const {
     data: user,
@@ -90,9 +93,7 @@ const UpdateUser = () => {
             }
           }
           refetch();
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
+          navigate("/");
           dispatch(
             addToast({
               info: "success",
@@ -161,6 +162,7 @@ const UpdateUser = () => {
               key={(user?.[action as keyof User] || "").toString()}
               value={user?.[action as keyof User] || ""}
               onSave={handleSave}
+              loading={loading}
             />
           </Card>
         )}
@@ -172,10 +174,12 @@ const UpdateUser = () => {
 const Action = ({
   action,
   value,
+  loading,
   onSave,
 }: {
   action: string;
   value: string | string[] | number;
+  loading: boolean;
   onSave?: (val: string | string[]) => void;
 }) => {
   const [initialValue, setInitialValue] = useState<string>(value.toString());
@@ -245,7 +249,9 @@ const Action = ({
       </FormControl>
 
       <div className="flex justify-end flex-wrap gap-6 pt-4 mt-6 border-t-1 border-[#E0E0E0] w-full">
-        <Button onClick={handleSave}>Save</Button>
+        <Button onClick={handleSave} disabled={loading}>
+          Save
+        </Button>
       </div>
     </>
   );
