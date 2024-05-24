@@ -5,6 +5,9 @@
 1. npm install 
 2. npm run dev
 
+### For testing (vitest) 
+npm run test 
+
 ### we need to configure backend cors for our app (http://localhost:5173/)
 
 ## Description
