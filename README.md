@@ -57,3 +57,32 @@ Currently, two official plugins are available:
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
 - Configure the top-level `parserOptions` property like this:
+
+### E2E testing (Cypress)
+This application package contains Cypress e2e tests for the Ameri Pharma  application.
+### E2E Test case execution
+After runing mocked backend and FE use following command to start cypress test
+npm run cypress:open
+
+### E2E Test case execution - Headless Mode
+npm run cypress:run
+
+### Folder Structure
+cypress/
+├── e2e/                     # Contains all test cases
+│   ├── userManagement.cy.ts # Example test file
+│   └── ...
+├── fixtures/                # Test data (e.g., JSON fixtures)
+│   ├── user.json
+│   ├── allergies.json
+│   └── ...
+├── support/                 # Custom commands and configurations
+│   ├── commands.ts          # Custom Cypress commands
+│   ├── commands.d.ts        # TypeScript declarations for commands
+│   └── ...
+└── cypress.config.ts        # Cypress configuration file
+
+### Environment Variables
+CYPRESS_BASE_URL=http://localhost:3000
+CYPRESS_API_URL=http://localhost:5173
+

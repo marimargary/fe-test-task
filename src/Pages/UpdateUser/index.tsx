@@ -229,6 +229,7 @@ const Action = ({
   return (
     <>
       <FormControl
+        data-testid="user-allergies-input"
         error={!!error}
         variant="standard"
         sx={{
@@ -236,7 +237,12 @@ const Action = ({
         }}
       >
         {action !== "allergies" ? (
-          <Input value={initialValue} onInput={handleChange} error={!!error} />
+          <Input
+            value={initialValue}
+            onInput={handleChange}
+            error={!!error}
+            data-testid={"user-" + action + "-input"}
+          />
         ) : (
           <ComboBox
             options={allergies}
@@ -249,7 +255,7 @@ const Action = ({
       </FormControl>
 
       <div className="flex justify-end flex-wrap gap-6 pt-4 mt-6 border-t-1 border-[#E0E0E0] w-full">
-        <Button onClick={handleSave} disabled={loading}>
+        <Button onClick={handleSave} disabled={loading} data-testid="save-button">
           Save
         </Button>
       </div>

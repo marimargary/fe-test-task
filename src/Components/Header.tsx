@@ -28,7 +28,9 @@ const Header = () => {
           </Typography>
         </Link>
         <Link to="/addUser">
-          <Button theme="light">Add User</Button>
+          <Button theme="light" data-testid="add-user-button">
+            Add User
+          </Button>
         </Link>
       </Container>
     </div>

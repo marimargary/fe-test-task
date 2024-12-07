@@ -41,7 +41,10 @@ const UserCard = ({ data }: { data: User }) => {
   ];
 
   return (
-    <Card sx={{ borderRadius: "12px", position: "relative", overflow: "visible" }}>
+    <Card
+      sx={{ borderRadius: "12px", position: "relative", overflow: "visible" }}
+      data-testid="users-list-grid"
+    >
       <CardContent
         sx={{
           p: "15px !important",
@@ -94,7 +97,9 @@ const UserCard = ({ data }: { data: User }) => {
             <span className="font-roboto text-sm text-grey-600">{data.phone}</span>
           </div>
           <div>
-            <span className="font-semibold">Allergies: </span>
+            <span className="font-semibold" data-testid="user-allergies-input">
+              Allergies:{" "}
+            </span>
             <div className="flex flex-wrap gap-1">
               {Array.isArray(data.allergies)
                 ? (data.allergies || []).map((item, idx) => (

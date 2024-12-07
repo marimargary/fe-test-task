@@ -31,7 +31,7 @@ const Toast: React.FC<ToastProps> = ({ id, message, variant, info, timeout = 300
   }, [dispatch, id, timeout]);
 
   return (
-    <div className={`toast ${visible ? "toast-enter" : "toast-exit"}`}>
+    <div className={`toast ${visible ? "toast-enter" : "toast-exit"}`} data-testid="success-toast">
       <Alert
         variant={variant}
         severity={info}

@@ -69,7 +69,7 @@ const ComboBox = ({
       inputMode="search"
       onInputChange={(_, newInputValue) => debouncedInputChange(newInputValue)}
       renderOption={(props, option, { selected }) => (
-        <li {...props} key={option.value}>
+        <li {...props} key={option.value} data-testid={"allergies-option-" + option.value}>
           <Checkbox
             icon={icon}
             checkedIcon={checkedIcon}

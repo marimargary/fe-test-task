@@ -87,6 +87,7 @@ const UserForm = ({
             fontSize: "24px",
             fontFamily: "Roboto",
           }}
+          data-testid="create-new-user-title"
         >
           Create User
         </Typography>
@@ -104,6 +105,7 @@ const UserForm = ({
             }}
             placeholder="Enter User Name"
             error={!!errors.name}
+            data-testid="user-name-input"
           />
           {!!errors.name && <FormHelperText>This field is required</FormHelperText>}
         </FormControl>
@@ -121,6 +123,7 @@ const UserForm = ({
             }}
             placeholder="Enter Email"
             error={!!errors.email}
+            data-testid="user-email-input"
           />
           {!!errors.email && <FormHelperText>{errors.email.message}</FormHelperText>}
         </FormControl>
@@ -138,11 +141,16 @@ const UserForm = ({
             }}
             placeholder="Enter Phone Number"
             error={!!errors.phone}
+            data-testid="user-phone-input"
           />
           {!!errors.phone && <FormHelperText>This field is required</FormHelperText>}
         </FormControl>
 
-        <FormControl error={!!errors.allergies} variant="standard">
+        <FormControl
+          error={!!errors.allergies}
+          variant="standard"
+          data-testid="allergies-form-control"
+        >
           <ComboBox
             options={allergies}
             defaultSelectedItems={selectedAllergies.map((item) => ({
@@ -158,7 +166,7 @@ const UserForm = ({
         </FormControl>
 
         <div className="flex justify-end flex-wrap gap-6 pt-4 mt-2 border-t-1 border-[#E0E0E0] w-full ">
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading} data-testid="save-button">
             Save
           </Button>
         </div>

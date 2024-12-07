@@ -25,6 +25,7 @@ const UsersList = () => {
           borderBottom: "1px solid #E0E0E0",
           pb: "12px",
         }}
+        data-testid="users-list-title"
       >
         Users List
       </Typography>
